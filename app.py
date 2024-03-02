@@ -68,7 +68,7 @@ def main():
     except FileNotFoundError:
         pass
 
-    menu = ["Add a new journal entry", "View past journal entries", "Analyze sentiment of a journal entry", "Extract keywords from a journal entry", "Exit"]
+    menu = ["Add a new journal entry", "View past journal entries", "Analyze sentiment of a journal entry", "Extract keywords from a journal entry"]
     choice = st.sidebar.selectbox("Menu", menu)
 
     if choice == "Add a new journal entry":
@@ -95,9 +95,6 @@ def main():
         content = journal_ai.journal_df.loc[journal_ai.journal_df['title'] == selected_entry, 'content'].iloc[0]
         if st.button("Extract Keywords"):
             journal_ai.extract_keywords(content)
-
-    else:
-        st.write("Exiting...")
 
 if __name__ == "__main__":
     main()
